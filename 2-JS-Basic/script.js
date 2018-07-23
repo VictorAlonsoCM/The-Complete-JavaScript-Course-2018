@@ -389,7 +389,7 @@ console.log(tips, finalValues);
 
 /************************************************ 
  *  Objects and Properties
-*/
+
 
 var victor = {
     firstName: 'Victor',
@@ -406,3 +406,25 @@ console.log(victor[x]);
 console.log(victor.job);
 victor.job = 'No working';
 console.log(victor.job);
+
+*/
+
+/*************************************************
+ * Objects and methods
+ */
+
+var victor = {
+    firstName: 'Victor',
+    lastName: 'Contreras',
+    birthYear: 1996,
+    family: ['Andy', 'Martin', 'Victor'],
+    job: 'Programmer',
+    isMarried: false,
+    calcAge: function(birthYear){
+        this.age =  2018 - this.birthYear;
+    }
+};
+
+console.log(victor.calcAge(victor.birthYear));
+//victor.age = victor.calcAge();
+console.log(victor);
