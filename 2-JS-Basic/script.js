@@ -364,7 +364,7 @@ In the end, John would like to have 2 arrays:
 (NOTE: To calculate 20% of a value, simply multiply it with 20/100 = 0.2)
 GOOD LUCK 😀
 
-*/
+
 var bills = [124, 48, 268];
 console.log(bills);
 
@@ -385,3 +385,24 @@ var finalValues = [bills[0] + tips[0],
                    bills[2] + tips[2]];
 console.log(tips, finalValues);
 
+*/
+
+/************************************************ 
+ *  Objects and Properties
+*/
+
+var victor = {
+    firstName: 'Victor',
+    lastName: 'Contreras',
+    birthYear: 1990,
+    family: ['Andy', 'Martin', 'Victor'],
+    job: 'Programmer',
+    isMarried: false
+};
+console.log(victor.firstName);
+console.log(victor['lastName']);
+var x = 'birthYear';
+console.log(victor[x]);
+console.log(victor.job);
+victor.job = 'No working';
+console.log(victor.job);
