@@ -441,7 +441,7 @@ Let's remember the first coding challenge where Mark and John compared their BMI
 3. In the end, log to the console who has the highest BMI, together with the full name and the respective BMI. Don't forget they might have the same BMI.
 Remember: BMI = mass / height^2 = mass / (height * height). (mass in kg and height in meter).
 GOOD LUCK 😀
-*/
+*/ /*
 
 var john = {
     fullName: 'John Smith',
@@ -473,4 +473,38 @@ if(john.bmi > mark.bmi){
     console.log(mark.bmi + ' has a higher BMI of ' + mark.bmi);
 }else{
     console.log('Their have the same BMI');
+}
+*/
+
+/*******************************************
+ * Loops and iteration
+ */
+
+for(let i  = 1; i <= 10; i++){
+    console.log(i);
+}
+
+var victor = ['Victor', 'Contreras', 1994, 'Programmer', false];
+for(let i = 0; i < victor.length; i++){
+    console.log(victor[i]);
+}
+
+var i = 0;
+while(i < victor.length){
+    console.log(victor[i]);
+    i++;
+}
+
+for(let i = 0; i < victor.length; i++){
+    if(typeof victor[i] !== 'string') continue;
+    console.log(victor[i]);
+}
+
+for(let i = 0; i < victor.length; i++){
+    if(typeof victor[i] !== 'string') break;
+    console.log(victor[i]);
+}
+
+for(let i = victor.length; i >= 0; i--){
+    console.log(victor[i]);
 }
