@@ -553,7 +553,7 @@ tipCalc(bills);
 for(let i = 0; i < bills.length; i++){
     console.log(totalToPay[i]);
 } */
-
+/*
 var john = {
     fullName: 'John Smith',
     bills: [124, 48, 268, 180, 42],
@@ -624,3 +624,6 @@ if (john.average > mark.average) {
 } else if (mark.average > john.average) {
     console.log(mark.fullName + '\'s family pays higher tips, with an average of $' + mark.average);
 }
+
+*/
+
