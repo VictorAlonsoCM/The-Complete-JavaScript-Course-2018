@@ -1,6 +1,6 @@
 ///////////////////////////////////////
 // Lecture: Hoisting
-
+/*
 calculateAge(1965);
 
 //Function declaration
@@ -30,3 +30,37 @@ function foo(){
 }
 foo();
 console.log(age);
+
+*/
+
+/////////////////////////////////////
+// Lecture: Scoping
+
+// First scoping example
+var a = 'Hello!';
+first();
+function first() {
+    var b = 'Hi!';
+    second();
+    function second() {
+        var c = 'Hey!';
+        console.log(a + b + c);
+    }
+}
+
+// Example to show the difference between execution stack and scope chain
+var a = 'Hello!';
+first();
+function first() {
+    var b = 'Hi!';
+    second();
+    function second() {
+        var c = 'Hey!';
+        third();
+    }
+}
+function third() {
+    var d = 'Victor';
+    //console.log(c);
+    console.log(a+d);
+}
