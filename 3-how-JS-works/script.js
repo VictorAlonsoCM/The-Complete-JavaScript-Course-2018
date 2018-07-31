@@ -36,6 +36,8 @@ console.log(age);
 /////////////////////////////////////
 // Lecture: Scoping
 
+/*
+
 // First scoping example
 var a = 'Hello!';
 first();
@@ -64,3 +66,45 @@ function third() {
     //console.log(c);
     console.log(a+d);
 }
+
+*/
+
+/*******************************************************
+ * Lecture: The this keyword
+ */
+
+// This prints the windows object
+//console.log(this);
+/*
+calculateAge(1996);
+
+function calculateAge(year){
+    console.log(2018 - year);
+    console.log(this);
+}
+*/
+var victor= {
+    name: 'Victor',
+    yearOfBirth: 1990,
+    calculateAge: function(){
+        console.log(this);
+        console.log(2018 - this.yearOfBirth);
+
+        /*
+        function innerFunction(){
+            console.log(this);
+        }
+        innerFunction();
+        */
+    }
+};
+
+victor.calculateAge();
+
+var mike = {
+    name: 'Mike',
+    yearOfBirth: 1983
+};
+
+mike.calculateAge = victor.calculateAge;
+mike.calculateAge();
