@@ -9,21 +9,36 @@ GAME RULES:
 
 */
 
-var scores, roundScore, activePayer, dice;
+var scores, roundScore, activePayer;
 
 scores = [0,0];
 roundScore = [0,0];
 activePayer = 0;
 
-dice = Math.floor(Math.random()*6)+1;
-
 //This just write everything as a string
-document.querySelector('#current-' + activePayer).textContent = dice;
+//document.querySelector('#current-' + activePayer).textContent = dice;
 //This is for write HTML code in the DOM.
 //document.querySelector('#current-' + activePayer).innerHTML = '<em>' + dice + '</em>';
 
 //This is just to read the content of elements from the DOM
-var x = document.querySelector('#score-0').textContent;
-console.log(x);
+//var x = document.querySelector('#score-0').textContent;
+//console.log(x);
 
 document.querySelector('.dice').style.display = 'none';
+document.getElementById('score-0').textContent = '0';
+document.getElementById('score-1').textContent = '0';
+document.getElementById('current-0').textContent = '0';
+document.getElementById('current-1').textContent = '0';
+
+// Animating the dice with the button btn-roll
+document.querySelector('.btn-roll').addEventListener('click', function(){
+    // This an Anonymous Function and a Callback that will be called when the button were pressed
+    //1. Random number
+    var dice = Math.floor(Math.random()*6)+1;
+    //2. Display the result
+    var diceDOM = document.querySelector('.dice');
+    diceDOM.style.display = 'block';
+    diceDOM.src = 'dice-' + dice + '.png';
+    //3. Update the round score IF the rolled number was NOT a 1
+    
+});
