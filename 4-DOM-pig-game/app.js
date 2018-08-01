@@ -12,13 +12,13 @@ GAME RULES:
 var scores, roundScore, activePayer;
 
 scores = [0,0];
-roundScore = [0,0];
-activePayer = 0;
+roundScore = 0;
+activePlayer = 0;
 
 //This just write everything as a string
-//document.querySelector('#current-' + activePayer).textContent = dice;
+//document.querySelector('#current-' + activePlayer).textContent = dice;
 //This is for write HTML code in the DOM.
-//document.querySelector('#current-' + activePayer).innerHTML = '<em>' + dice + '</em>';
+//document.querySelector('#current-' + activePlayer).innerHTML = '<em>' + dice + '</em>';
 
 //This is just to read the content of elements from the DOM
 //var x = document.querySelector('#score-0').textContent;
@@ -40,5 +40,30 @@ document.querySelector('.btn-roll').addEventListener('click', function(){
     diceDOM.style.display = 'block';
     diceDOM.src = 'dice-' + dice + '.png';
     //3. Update the round score IF the rolled number was NOT a 1
-    
+    if(dice !== 1){
+        //Add score
+        roundScore += dice;
+        document.querySelector("#current-" + activePlayer).textContent = roundScore;
+    }else{
+        //Next player
+        activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
+        roundScore = 0;
+        //We reset the current score of the current player
+        document.getElementById('current-0').textContent = '0';
+        document.getElementById('current-1').textContent = '0';
+
+        //Remove the active class and add it to the panel of the player-1
+        //document.querySelector('.player-0-panel').classList.remove('active');
+        //document.querySelector('.player-1-panel').classList.add('active');
+
+        /*
+          The better way to do this is with the class toggle, the if the class is there
+          then it will be removed or it will be added
+        */
+        document.querySelector('.player-0-panel').classList.toggle('active');
+        document.querySelector('.player-1-panel').classList.toggle('active');
+
+        //This is for hiding the dice when the player change
+        document.querySelector('.dice').style.display = 'none';
+    }
 });
