@@ -9,7 +9,7 @@ GAME RULES:
 
 */
 
-var scores, roundScore, activePayer;
+var scores, roundScore, activePlayer;
 
 scores = [0,0];
 roundScore = 0;
@@ -31,7 +31,7 @@ document.getElementById('current-0').textContent = '0';
 document.getElementById('current-1').textContent = '0';
 
 // Animating the dice with the button btn-roll
-document.querySelector('.btn-roll').addEventListener('click', function(){
+document.querySelector('.btn-roll').addEventListener('click', () => {
     // This an Anonymous Function and a Callback that will be called when the button were pressed
     //1. Random number
     var dice = Math.floor(Math.random()*6)+1;
@@ -45,25 +45,47 @@ document.querySelector('.btn-roll').addEventListener('click', function(){
         roundScore += dice;
         document.querySelector("#current-" + activePlayer).textContent = roundScore;
     }else{
-        //Next player
-        activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
-        roundScore = 0;
-        //We reset the current score of the current player
-        document.getElementById('current-0').textContent = '0';
-        document.getElementById('current-1').textContent = '0';
-
-        //Remove the active class and add it to the panel of the player-1
-        //document.querySelector('.player-0-panel').classList.remove('active');
-        //document.querySelector('.player-1-panel').classList.add('active');
-
-        /*
-          The better way to do this is with the class toggle, the if the class is there
-          then it will be removed or it will be added
-        */
-        document.querySelector('.player-0-panel').classList.toggle('active');
-        document.querySelector('.player-1-panel').classList.toggle('active');
-
-        //This is for hiding the dice when the player change
-        document.querySelector('.dice').style.display = 'none';
+        nextPlayer();
     }
 });
+
+document.querySelector('.btn-hold').addEventListener('click', () =>{
+    //Add CURRENT score to GLOBAL score
+    scores[activePlayer] += roundScore;
+
+    // Update the UI
+    document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer];
+    // Check if payer won the game
+    if(scores[activePlayer] >= 100){
+        document.querySelector('#name-' + activePlayer).textContent = 'Winner!';
+        document.querySelector('.dice').style.display = 'none';
+        document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner');
+        document.querySelector('.player-' + activePlayer + '-panel').classList.remove('active');
+    }else{
+        //Next player
+        nextPlayer();
+    }
+});
+
+function nextPlayer(){
+    //Next player
+    activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
+    roundScore = 0;
+    //We reset the current score of the current player
+    document.getElementById('current-0').textContent = '0';
+    document.getElementById('current-1').textContent = '0';
+
+    //Remove the active class and add it to the panel of the player-1
+    //document.querySelector('.player-0-panel').classList.remove('active');
+    //document.querySelector('.player-1-panel').classList.add('active');
+
+    /*
+      The better way to do this is with the class toggle, the if the class is there
+      then it will be removed or it will be added
+    */
+    document.querySelector('.player-0-panel').classList.toggle('active');
+    document.querySelector('.player-1-panel').classList.toggle('active');
+
+    //This is for hiding the dice when the player change
+    document.querySelector('.dice').style.display = 'none';
+};
