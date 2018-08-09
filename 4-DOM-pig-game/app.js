@@ -11,24 +11,8 @@ GAME RULES:
 
 var scores, roundScore, activePlayer;
 
-scores = [0,0];
-roundScore = 0;
-activePlayer = 0;
-
-//This just write everything as a string
-//document.querySelector('#current-' + activePlayer).textContent = dice;
-//This is for write HTML code in the DOM.
-//document.querySelector('#current-' + activePlayer).innerHTML = '<em>' + dice + '</em>';
-
-//This is just to read the content of elements from the DOM
-//var x = document.querySelector('#score-0').textContent;
-//console.log(x);
-
-document.querySelector('.dice').style.display = 'none';
-document.getElementById('score-0').textContent = '0';
-document.getElementById('score-1').textContent = '0';
-document.getElementById('current-0').textContent = '0';
-document.getElementById('current-1').textContent = '0';
+//This is for initializing the game
+init();
 
 // Animating the dice with the button btn-roll
 document.querySelector('.btn-roll').addEventListener('click', () => {
@@ -88,4 +72,36 @@ function nextPlayer(){
 
     //This is for hiding the dice when the player change
     document.querySelector('.dice').style.display = 'none';
+};
+
+
+//Button new
+document.querySelector('.btn-new').addEventListener('click', init);
+
+function init(){
+    scores = [0,0];
+    roundScore = 0;
+    activePlayer = 0;
+
+    //This just write everything as a string
+    //document.querySelector('#current-' + activePlayer).textContent = dice;
+    //This is for write HTML code in the DOM.
+    //document.querySelector('#current-' + activePlayer).innerHTML = '<em>' + dice + '</em>';
+
+    //This is just to read the content of elements from the DOM
+    //var x = document.querySelector('#score-0').textContent;
+    //console.log(x);
+
+    document.querySelector('.dice').style.display = 'none';
+    document.getElementById('score-0').textContent = '0';
+    document.getElementById('score-1').textContent = '0';
+    document.getElementById('current-0').textContent = '0';
+    document.getElementById('current-1').textContent = '0';
+    document.getElementById('name-0').textContent = 'Player 1';
+    document.getElementById('name-1').textContent = 'Player 2';
+    document.querySelector('.player-0-panel').classList.remove('winner');
+    document.querySelector('.player-1-panel').classList.remove('winner');
+    document.querySelector('.player-0-panel').classList.remove('active');
+    document.querySelector('.player-1-panel').classList.remove('active');
+    document.querySelector('.player-0-panel').classList.add('active');
 };
