@@ -60,6 +60,15 @@ document.querySelector('.btn-hold').addEventListener('click', () =>{
         // Update the UI
         document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer];
         
+        var input = document.querySelector('.final-score').value;
+        var winnerScore;
+
+        if(input){
+            winnerScore = input;
+        }else{
+            winnerScore = 100
+        }
+
         // Check if payer won the game
         if(scores[activePlayer] >= winnerScore){
             document.querySelector('#name-' + activePlayer).textContent = 'Winner!';
@@ -106,7 +115,7 @@ function init(){
     roundScore = 0;
     activePlayer = 0;
     gamePlaying = true;
-    winnerScore = prompt('Write the score to win: ', 100);
+    //winnerScore = prompt('Write the score to win: ', 100);
     //This just write everything as a string
     //document.querySelector('#current-' + activePlayer).textContent = dice;
     //This is for write HTML code in the DOM.
