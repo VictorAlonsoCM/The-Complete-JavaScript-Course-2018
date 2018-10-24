@@ -60,6 +60,8 @@ var jane = Object.create(personProto, {
 
 // Primitives vs Objects
 
+/*
+
 // Primitives
 var a = 23;
 var b = a;
@@ -91,3 +93,25 @@ function change(a, b){
 
 change(age, obj);
 console.log(age, obj.city);
+
+*/
+
+// Passing functions as arguments
+
+var years = [1994, 1988, 1780, 2018];
+
+function arrayCalc(arr, func){
+  var arrRes = [];
+  for(let i = 0; i < arr.length; i++){
+    arrRes.push(func(arr[i]));
+  }
+  return arrRes;
+}
+
+function calculateAge(el) {
+  return 2018 - el;
+}
+
+ages = arrayCalc(years, calculateAge);
+
+console.log(ages);
