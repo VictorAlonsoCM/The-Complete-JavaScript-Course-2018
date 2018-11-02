@@ -98,36 +98,62 @@ console.log(age, obj.city);
 
 // Passing functions as arguments
 
-var years = [1994, 1988, 2011, 2000];
+// var years = [1994, 1988, 2011, 2000];
 
-function arrayCalc(arr, func){
-  var arrRes = [];
-  for(let i = 0; i < arr.length; i++){
-    arrRes.push(func(arr[i]));
+// function arrayCalc(arr, func){
+//   var arrRes = [];
+//   for(let i = 0; i < arr.length; i++){
+//     arrRes.push(func(arr[i]));
+//   }
+//   return arrRes;
+// }
+
+// function calculateAge(el) {
+//   return 2018 - el;
+// }
+
+// function isFullAge(el) {
+//   return el >= 18;
+// }
+
+// function maxHeartRate(el) {
+//   if(el >= 18 && el <= 81){
+//     return Math.round(206.9 - (0.67 * el));
+//   }else{
+//     return -1;
+//   }
+// }
+// // if we do that we will call the function and pass the return value
+// //var ages = arrayCalc(years, calculateAge());
+// var ages = arrayCalc(years, calculateAge);
+// var fullAges = arrayCalc(ages, isFullAge);
+// var rates = arrayCalc(ages, maxHeartRate);
+
+// console.log(ages);
+// console.log(fullAges);
+// console.log(rates);
+
+
+/******************************* */
+// Functions that return functions
+/******************************* */
+
+function interviewQuestion(job){
+  if (job === 'designer'){
+    return function(name){
+       console.log(name + ', can you please what do you do');
+    }
+  } else if (job === 'teacher'){
+    return function(name){
+      console.log('What subject do you teach, ' + name + '?');
+    }
+  } else {
+    return function(name){
+      console.log('Hello ' + name + ', what do you do?');
+    }
   }
-  return arrRes;
 }
 
-function calculateAge(el) {
-  return 2018 - el;
-}
-
-function isFullAge(el) {
-  return el >= 18;
-}
-
-function maxHeartRate(el) {
-  if(el >= 18 && el <= 81){
-    return Math.round(206.9 - (0.67 * el));
-  }else{
-    return -1;
-  }
-}
-
-var ages = arrayCalc(years, calculateAge);
-var fullAges = arrayCalc(ages, isFullAge);
-var rates = arrayCalc(ages, maxHeartRate);
-
-console.log(ages);
-console.log(fullAges);
-console.log(rates);
+var teacherQuestion = interviewQuestion('teacher');
+teacherQuestion('john');
+interviewQuestion('teacher')('Mark');
