@@ -138,22 +138,44 @@ console.log(age, obj.city);
 // Functions that return functions
 /******************************* */
 
-function interviewQuestion(job){
-  if (job === 'designer'){
-    return function(name){
-       console.log(name + ', can you please what do you do');
-    }
-  } else if (job === 'teacher'){
-    return function(name){
-      console.log('What subject do you teach, ' + name + '?');
-    }
-  } else {
-    return function(name){
-      console.log('Hello ' + name + ', what do you do?');
-    }
-  }
+// function interviewQuestion(job){
+//   if (job === 'designer'){
+//     return function(name){
+//        console.log(name + ', can you please what do you do');
+//     }
+//   } else if (job === 'teacher'){
+//     return function(name){
+//       console.log('What subject do you teach, ' + name + '?');
+//     }
+//   } else {
+//     return function(name){
+//       console.log('Hello ' + name + ', what do you do?');
+//     }
+//   }
+// }
+
+// var teacherQuestion = interviewQuestion('teacher');
+// teacherQuestion('john');
+// interviewQuestion('teacher')('Mark');
+
+/******************************** */
+// IIFE
+/******************************** */
+
+/*
+function game(){
+  var score = Math.random() * 10;
+  console.log(score >= 5);
 }
 
-var teacherQuestion = interviewQuestion('teacher');
-teacherQuestion('john');
-interviewQuestion('teacher')('Mark');
+game(); */
+
+(function () {
+  var score = Math.random() * 10;
+  console.log(score >= 5);
+})();
+
+(function (goodLuck) {
+  var score = Math.random() * 10;
+  console.log(score >= 5 - goodLuck);
+})(5);
